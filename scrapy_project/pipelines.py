@@ -7,6 +7,7 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
+import json
 
 class ScrapyProjectPipeline:
     def process_item(self, item, spider):
@@ -29,10 +30,15 @@ class JobparserPipeline:
 
 
     def process_item(self, item, spider):
-        print()
-        # item.get('cost')
-        # item
-        collections = self.mongo_base[spider.name] # spider.name - подтягивает имя паука (может быть много пауков и чтобы их корректно в Моного они загрузились)
-        collections.insetr_one(item )
+        print(item)
+
+        dict1 = {}
+        dict1[item['name'][0]] = [item['cost'], item['url_items']]
+
+        # Добавляю данные в json
+        with open('result.json', 'a', encoding='utf-8') as file:
+            json.dump(dict1, file, ensure_ascii=False, indent=4)
+            file.write(',\n')
+
         return item
 

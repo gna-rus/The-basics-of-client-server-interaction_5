@@ -67,9 +67,9 @@ COOKIES_ENABLED = True #Использовать или нет куки
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 # Включить\выключить pipeline (по умолчанию эти 3 строчки закоментированы)
-# ITEM_PIPELINES = {
-#    "scrapy_project.pipelines.JobparserPipeline": 300,
-# }
+ITEM_PIPELINES = {
+   "scrapy_project.pipelines.JobparserPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
